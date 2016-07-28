@@ -27,6 +27,21 @@ describe('Header', function () {
         });
     });
 
+    describe('parse', function () {
+        it('should trim whitespace from headers when parsing them', function () {
+            expect(Header.parse('a: b\r\nc: d')).to.eql([
+                {
+                    key: 'a',
+                    value: 'b'
+                },
+                {
+                    key: 'c',
+                    value: 'd'
+                }
+            ]);
+        });
+    });
+
     describe('parseSingle', function () {
         it('should return an empty header on invalid input', function () {
             expect(Header.parseSingle({})).to.eql({
