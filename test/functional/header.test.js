@@ -40,6 +40,19 @@ describe('Header', function () {
                 }
             ]);
         });
+
+        it('should trim whitespace from headers when parsing them', function () {
+            expect(Header.parse('a: b\nc: d')).to.eql([
+                {
+                    key: 'a',
+                    value: 'b'
+                },
+                {
+                    key: 'c',
+                    value: 'd'
+                }
+            ]);
+        });
     });
 
     describe('parseSingle', function () {
